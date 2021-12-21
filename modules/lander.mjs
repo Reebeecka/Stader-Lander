@@ -1,3 +1,4 @@
+// export only top-level function (printLands)
 export function printLands() {
   //Get lander's data from JSON.
   fetch("json/land.json")
@@ -5,35 +6,35 @@ export function printLands() {
     .then((data) => data.forEach((land) => printLand(land)));
 }
 
+// print one country at a time (called from inside the fetch chain)
 function printLand(land) {
-  //(land in lands) {
   let ul = document.getElementById("land");
-  let li = document.createElement("li");
+  //let li = document.createElement("li");
+  //Jag trodde att create button är bättre än list? Vad tror ni?
+  let li = document.createElement("button");
   ul.append(li);
   li.innerText = land.countryname;
-  // print each team in the array of lands
+  // print each land in the array of lands
   let landUL = document.createElement("ul");
   li.append(landUL);
+  printStad(landUL, land.id);
 }
 
-export function printStad(id, landUL) {
+function printStad(landUL, id) {
   //Get Stad's data from JSON.
   fetch("json/stad.json")
     .then((response) => response.json())
-    // filter all cities by selecting only those with the right landId
-    .then((stads) => stads.filter((stad) => stad.landId == id))
+    .then((stads) => stads.filter((stad) => stad.countryid == id))
     .then((data) =>
       data.sort(function (a, b) {
-        return a.landName.localeCompare(b.landName);
+        return a.stadname.localeCompare(b.stadname);
       })
     )
-    .then((data) => printStad(data));
+    .then((data) => data.forEach((stad) => printStad(stad)));
 
   function printStad(stad) {
-    for (stadname in stad) {
-      let li = document.createElement("li");
-      landUL.append(li);
-      li.innerText = stad[stadname].stadname;
-    }
+    let li = document.createElement("li");
+    landUL.append(li);
+    li.innerText = stad.stadname;
   }
 }

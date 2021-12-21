@@ -5,10 +5,9 @@ console.log(getLandAndStad);
 hello();
 
 /// Lander.mjs
-import { printLands, printStad } from "./modules/lander.mjs";
-printLands();
-printStad(id, landUL);
 /// function som skriver ut länder
+import { printLands } from "./modules/lander.mjs";
+printLands();
 
 /// stader.mjs
 /// klickevent visa städer
