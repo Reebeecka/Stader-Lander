@@ -5,14 +5,14 @@ export function Lander(landData){
        landList = landData[i];
        console.log("land",landList);
     }
-       
+    let landerulList =document.getElementById("landerulList");
        landData.forEach(eachLand => {
            console.log("nu"+ eachLand);
-       let landerList =document.getElementById("landerList");
-    //    landerList.innerText=eachLand.countryname;
-    //    landerList.appendChild(landList);
-       landerList.innerHTML = "<li>" + landList.countryname + "</li>"
-    //    mainContainer.appendChild(landerList);
+
+       let li= document.createElement("li");
+       li.innerText= eachLand.countryname; 
+       landerulList.appendChild(li);
     });
+    
     
 }
