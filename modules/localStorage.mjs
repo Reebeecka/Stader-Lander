@@ -1,30 +1,17 @@
 
-    
-export function SaveToStorage(ID) {
+//Function that receves the ID from the City you just pressed
+    export function SaveToStorage(ID) {
 
-    let getID = IDarray();
+    //Create varable for the Array and get item from localstorage
+    let arrayID = JSON.parse(localStorage.getItem('ID')) || [];
 
-    getID.push(ID);
+    //To make it not able to push ID if the ID is already in Localstorage
+    if (arrayID.includes(ID) === false) {
+        arrayID.push(ID);
+    };
 
-    localStorage.setItem("ID", JSON.stringify(getID));
+    //Sets the loccal storage ID to a sting in Localstorage
+    localStorage.setItem("ID", JSON.stringify(arrayID));
 
 };
 
-function IDarray() {
-
-    return JSON.parse(localStorage.getItem('ID')) || []
-}
-
-
-//function printLocalStorage() {
-
-   // for (let i = 0; i < localStorage.length; i++) {
-
-   //     const key = localStorage.key(i);
-
-     //   const value = localStorage.getItem(key);
-
-    //    console.log(key);
-
-   // }
-//}
