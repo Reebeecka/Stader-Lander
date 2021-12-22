@@ -1,3 +1,5 @@
+import { SaveToStorage } from "./localStorage.mjs";
+
 export function printStad(id) {
   //Get Stad's data from JSON.
   fetch("json/stad.json")
@@ -22,11 +24,11 @@ export function printStad(id) {
     stader.append(li);
 
     // Adds eventlistenes to the cities
-    li.addEventListener("click", function(){
+    li.addEventListener("click", function () {
 
       //Finds the section already in HTML and clears in to only get one city
       let section = document.getElementById("section");
-      section.innerHTML="";
+      section.innerHTML = "";
 
       //Creates H1 and P element to wirte out the Cityname and popluation
       let stadH1 = document.createElement("h1");
@@ -35,7 +37,16 @@ export function printStad(id) {
       let stadP = document.createElement("p");
       stadP.innerText = stad.population;
 
-      section.append(stadH1, stadP);
+      //Create Button for visited city
+      let btnVisited = document.createElement("button");
+      btnVisited.innerText = "Jag har besökt denna stad!";
+
+      //Add eventlistener and give the new funtion acess to stad.ID, new function in LocalStorage
+      btnVisited.addEventListener("click", function () {
+        SaveToStorage(stad.id);
+      });
+
+      section.append(stadH1, stadP, btnVisited);
     })
   }
 }
