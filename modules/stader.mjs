@@ -43,6 +43,9 @@ export function printStad(id) {
 
       //Add eventlistener and give the new funtion acess to stad.ID, new function in LocalStorage
       btnVisited.addEventListener("click", function () {
+        let pressedBtnText = document.createElement("p");
+        pressedBtnText.innerText = "Fint! Staden är nu inlagd i dina besökta städer!";
+        section.append(pressedBtnText);
         SaveToStorage(stad.id);
       });
 
