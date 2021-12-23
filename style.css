@@ -1,3 +1,18 @@
 body {
   background-color: rgb(43, 199, 238);
+ 
+}
+nav{
+
+  font-size: 3rem;
+
+
+}
+
+button{
+
+  width: 10vw;
+  height: 3vw;
+  margin-left: 40px;
+
 }

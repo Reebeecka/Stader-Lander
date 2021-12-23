@@ -1,5 +1,6 @@
 import { SaveToStorage } from "./localStorage.mjs";
 
+
 export function printStad(id) {
   //Get Stad's data from JSON.
   fetch("json/stad.json")

@@ -15,3 +15,17 @@
 
 };
 
+export function removeStorage(){
+
+    localStorage.clear();
+}
+
+export function staderBesökt(){
+
+   let visitedId = JSON.parse(localStorage.getItem('ID')) || [];
+
+
+    return visitedId;
+    
+
+}

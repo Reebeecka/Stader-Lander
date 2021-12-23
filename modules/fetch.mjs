@@ -16,12 +16,5 @@ fetch("./json/stad.json")
 });
 }
 
-function Hello(){
-    console.log("hello");
-}
-
-export function hello(){
-    console.log("hello");
-}
 
 

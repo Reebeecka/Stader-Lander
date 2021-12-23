@@ -1,8 +1,8 @@
 /// import functions
-import { getLandAndStad, hello } from "./modules/fetch.mjs";
+import { getLandAndStad} from "./modules/fetch.mjs";
 console.log(getLandAndStad);
 
-hello();
+
 
 /// Lander.mjs
 /// function som skriver ut länder
