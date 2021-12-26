@@ -1,5 +1,6 @@
-import { printStad } from "./stader.mjs";
-import { removeStorage, staderBesökt } from "./localStorage.mjs";
+import { printStad,printVisitedCities} from "./stader.mjs";
+import { removeStorage} from "./localStorage.mjs";
+
 
 // export only top-level function (printLands)
 export function printLands() {
@@ -40,25 +41,23 @@ let btnBesökt=document.createElement("button");
 btnBesökt.innerText = "Städer jag besökt";
 
 //create eventlistener to "Städer jag besökt" button
-btnBesökt.addEventListener("click", function(){
-  let besöktStader = staderBesökt();
-   
-  besöktStader.forEach(id => {
-    printStad(id);
+btnBesökt.addEventListener("click",function(){
   
-  });
-  
- })
+printVisitedCities();
+});
 //create button for clear localstorage id in the main page
 let btnClear=document.createElement("button");
 btnClear.innerText = "clear Storage Data";
-let landNav=document.getElementById("land");
-landNav.append(btnClear,btnBesökt);
+let mainBtn=document.getElementById("main");
+mainBtn.append(btnClear, btnBesökt);
 
 //Add eventlistener and give the new function to clear the localstorage data
 btnClear.addEventListener("click", function(){
  removeStorage();
 
 })
+
+
+
  
 
