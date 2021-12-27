@@ -27,7 +27,7 @@ function printLand(land) {
     //Clear stader and section to only show one contries cities
     stader.innerHTML="";
     section.innerHTML="";
-    //call printStad, and send the ID of the contry you just clicked.
+    //call printStad, and send the ID of the contry you just clicked. IN Stader.mjs
     printStad(land.id);
   })
 
