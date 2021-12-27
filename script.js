@@ -1,13 +1,13 @@
-/// import functions
-// import { getLandAndStad, hello } from "./modules/fetch.mjs";
-// console.log(getLandAndStad);
 
-// hello();
-
-/// Lander.mjs
 /// function som skriver ut länder
-import { printLands } from "./modules/lander.mjs";
+import {printLands} from "./modules/lander.mjs";
+import { CitiesVisitedLiElement} from "./modules/CitiesVisited.mjs";
+
+//In lander.mjs
 printLands();
+//In citiesVisted.mjs
+CitiesVisitedLiElement();
+
 
 /// stader.mjs
 /// klickevent visa städer

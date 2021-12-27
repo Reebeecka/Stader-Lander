@@ -1,6 +1,5 @@
-import { printStad,printVisitedCities, population} from "./stader.mjs";
-import { removeStorage} from "./localStorage.mjs";
-
+import { printStad } from "./stader.mjs";
+//import { removeStorage } from "./localStorage.mjs";
 
 // export only top-level function (printLands)
 export function printLands() {
@@ -14,68 +13,27 @@ export function printLands() {
 function printLand(land) {
   let landNav = document.getElementById("land");
   let landName = document.createElement("li");
-
   //Add text to LI element with the name of the Country
   landName.innerText = land.countryname;
-
   // Append the Li element to the UL thats already in HTML
-  landNav.append(landName);
+  landNav.prepend(landName);
 
   //Create eventlistener for every contry
-  landName.addEventListener("click", function(){
+  landName.addEventListener("click", function () {
     //Stader is an ul list in index.html and section is also in main
     let stader = document.getElementById("stader");
     let section = document.getElementById("section");
     let clear = document.getElementById("clear");
     //Clear stader and section to only show one contries cities
-    stader.innerHTML="";
-    section.innerHTML="";
-    clear.innerHTML="";
-    //call printStad, and send the ID of the contry you just clicked.
+    stader.innerHTML = "";
+    section.innerHTML = "";
+    clear.innerHTML = "";
+    //call printStad, and send the ID of the contry you just clicked. IN Stader.mjs
     printStad(land.id);
   })
-
 }
 
-//create button for to show "Cities I visited"(Städer jag besökt) list in the main
-let btnVisited=document.createElement("li");
-btnVisited.innerText = "Städer jag besökt";
-
-let landNav = document.getElementById("land");
-landNav.append(btnVisited);
-
-//create eventlistener to "Städer jag besökt" button
-btnVisited.addEventListener("click",function(){
-  
-let clear = document.getElementById("clear");
-clear.innerHTML="";
-
-//In stader.mjs
-printVisitedCities();
-population();
 
 
-//create button for clear localstorage id in the main page
-let btnClear=document.createElement("button");
-btnClear.innerText = "Töm min lista";
 
-clear.append(btnClear);
-
-//Add eventlistener and give the new function to clear the localstorage data
-btnClear.addEventListener("click", function(){
-
-let section = document.getElementById("section");
-let stader = document.getElementById("stader");
-
-section.innerHTML="";
-stader.innerHTML="";
-
-  //In localStorage
- removeStorage();
-
-})
-
-});
-
- 
 
