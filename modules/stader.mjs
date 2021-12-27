@@ -28,11 +28,13 @@ export async function readWeatherAsync(stad) {
   let cityname=stad.stadname;
   
   let url="https://api.openweathermap.org/data/2.5/weather?q="+cityname+"&units=metric&appid=8a2c10b1ad16525bbb3226ccdfbfe9cb";
-  let g= await ReadAPI(url);
-  console.log(g.main.temp_min);
-  console.log(g.main.temp_max);
-  console.log(g.main.pressure);
-  console.log(g.main.humidity);
+  let currentWeather = await ReadAPI(url);
+  console.log(currentWeather.main.temp_min);
+  console.log(currentWeather.main.temp_max);
+  console.log(currentWeather.main.feels_like);
+  console.log(currentWeather.main.pressure);
+  console.log(currentWeather.main.humidity);
+ 
 
       //Finds the section already in HTML and clears in to only get one city
       let section = document.getElementById("section");
@@ -46,16 +48,19 @@ export async function readWeatherAsync(stad) {
 
       //Creates labels to print weather info like max temparature,min temparature and pressure
       let stadmaxtemp = document.createElement("label");
-      stadmaxtemp.innerText ="Maximum_Tepmarature::"+ g.main.temp_max+ " Degrees";
+      stadmaxtemp.innerText ="Maximum_Tepmarature::  "+ currentWeather.main.temp_max + " Degrees";
 
       let stadMainTemp= document.createElement("label");
-      stadMainTemp.innerText = "Minimum_Tepmarature::"+g.main.temp_min+ " Degrees";
+      stadMainTemp.innerText = "Minimum_Tepmarature::  "+currentWeather.main.temp_min + " Degrees";
+
+      let stadFeelslike= document.createElement("label");
+      stadFeelslike.innerText = "Feels_Like::  "+currentWeather.main.feels_like+ " Degrees";
       
       let stadPressure = document.createElement("label");
-      stadPressure.innerText = "Pressure::"+g.main.pressure;
+      stadPressure.innerText = "Pressure::  "+currentWeather.main.pressure;
 
       let stadHumidity = document.createElement("label");
-      stadHumidity.innerText = "Humidity::"+g.main.humidity;
+      stadHumidity.innerText = "Humidity::  "+currentWeather.main.humidity;
 
       //Create Button for visited city
       let btnVisited = document.createElement("button");
@@ -69,7 +74,7 @@ export async function readWeatherAsync(stad) {
         SaveToStorage(stad.id);
       });
 
-      section.append(stadmaxtemp,stadMainTemp,stadPressure,stadHumidity,stadH1, stadP, btnVisited,);
+      section.append(stadmaxtemp,stadMainTemp,stadFeelslike,stadPressure,stadHumidity,stadH1, stadP, btnVisited,);
   
 }
 
