@@ -1,10 +1,6 @@
-<<<<<<< Updated upstream
-import { printStad } from "./stader.mjs";
-=======
 import { printStad,printVisitedCities, population} from "./stader.mjs";
 import { removeStorage} from "./localStorage.mjs";
 
->>>>>>> Stashed changes
 
 // export only top-level function (printLands)
 export function printLands() {
@@ -34,19 +30,12 @@ function printLand(land) {
     //Clear stader and section to only show one contries cities
     stader.innerHTML="";
     section.innerHTML="";
-<<<<<<< Updated upstream
-    //call printStad, and send the ID of the contry you just clicked. IN Stader.mjs
-=======
     clear.innerHTML="";
     //call printStad, and send the ID of the contry you just clicked.
->>>>>>> Stashed changes
     printStad(land.id);
   })
 
 }
-<<<<<<< Updated upstream
-=======
-
 
 //create button for to show "Cities I visited"(Städer jag besökt) list in the main
 let btnVisited=document.createElement("li");
@@ -68,7 +57,7 @@ population();
 
 //create button for clear localstorage id in the main page
 let btnClear=document.createElement("button");
-btnClear.innerText = "clear Storage Data";
+btnClear.innerText = "Töm min lista";
 
 clear.append(btnClear);
 
@@ -90,4 +79,3 @@ stader.innerHTML="";
 
  
 
->>>>>>> Stashed changes

@@ -15,3 +15,18 @@
 
 };
 
+// function to remove localstorage
+export function removeStorage(){
+
+    localStorage.clear();
+}
+// funtion to get local storage save in visitedId
+export function citiesVisited(){
+
+   let visitedId = JSON.parse(localStorage.getItem('ID')) || [];
+
+
+    return visitedId;
+    
+
+}
