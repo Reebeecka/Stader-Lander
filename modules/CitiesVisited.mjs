@@ -1,7 +1,6 @@
 import { removeStorage } from "./localStorage.mjs";
 import { printVisitedCities, population } from "./CitiesVisitedInfo.mjs";
 
-
 export function CitiesVisitedLiElement() {
     //create button for to show "Cities I visited"(Städer jag besökt) list in the main
     let btnVisited = document.createElement("li");

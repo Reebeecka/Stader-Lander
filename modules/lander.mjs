@@ -1,4 +1,5 @@
 import { printStad } from "./stader.mjs";
+import { ReadWikiAPI } from "./PrintCityinfo.mjs";
 //import { removeStorage } from "./localStorage.mjs";
 
 // export only top-level function (printLands)
@@ -20,6 +21,7 @@ function printLand(land) {
 
   //Create eventlistener for every contry
   landName.addEventListener("click", function () {
+
     //Stader is an ul list in index.html and section is also in main
     let stader = document.getElementById("stader");
     let section = document.getElementById("section");
@@ -29,11 +31,33 @@ function printLand(land) {
     section.innerHTML = "";
     clear.innerHTML = "";
     //call printStad, and send the ID of the contry you just clicked. IN Stader.mjs
+  
+    printCountry(land);
     printStad(land.id);
   })
 }
 
+//ONÖDIG FUNKTION BARA FÖR KUL
+async function printCountry(land){
+  console.log(land.countryname);
+let wikiURL = "https://sv.wikipedia.org/w/rest.php/v1/search/page?q=" + land.countryname + "&limit=1";
+let s = await ReadWikiAPI(wikiURL);
 
+// //Creates H1 element that writes out Country name
+let contryH1 = document.createElement("h1");
+contryH1.innerText = land.countryname;
+// //Fetches from Wiki to print out a description of the contry
+let contryDescription = document.createElement("h3");
+contryDescription.innerHTML = s.pages[0].description;
+
+let contryImg = document.createElement("img");
+contryImg.src = s.pages[0].thumbnail.url;
+
+let description = document.createElement("p");
+description.innerHTML = "Till vänster ser du några av " + land.countryname + "s städer, tryck på en av dessa för mer infomration!"
+let section = document.getElementById("section");
+section.append(contryH1, contryDescription, contryImg, description);
+}
 
 
 

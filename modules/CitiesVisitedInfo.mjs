@@ -28,10 +28,18 @@ export async function population() {
         totPop = totPop + popCity.population;
     }
 
+    totPop = formatNumber(totPop);
+    function formatNumber(totPop) {
+        return totPop.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+    }
+
+    let description = document.createElement("p");
+    description.innerHTML = "Till vänster ser du alla städer du besökt";
+
     let allPopulation = document.createElement("p");
-    allPopulation.innerHTML = totPop;
+    allPopulation.innerHTML = "Det totala invånarantalet av alla dessa städer är " + totPop;
     let section = document.getElementById("section");
-    section.append(allPopulation);
+    section.append(description, allPopulation);
 }
 
 async function getStartObjById(Id) {

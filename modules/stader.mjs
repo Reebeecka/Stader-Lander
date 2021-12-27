@@ -21,7 +21,6 @@ export function printStadlocal(stad) {
   li.innerText = stad.stadname;
   //appended li to ul
   stader.append(li);
-
   // Adds eventlistenes to the cities
   li.addEventListener("click", function () {
     //In PrintCityInfo.mjs
