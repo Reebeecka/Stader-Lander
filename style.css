@@ -20,7 +20,7 @@ button{
 
 label{
 
-  display:inline-block;
+  display:grid;
   padding:10px 10px 10px 10px;
 
 }

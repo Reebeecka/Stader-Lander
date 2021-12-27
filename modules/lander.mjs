@@ -42,7 +42,8 @@ btnBesökt.innerText = "Städer jag besökt";
 
 //create eventlistener to "Städer jag besökt" button
 btnBesökt.addEventListener("click",function(){
-  
+
+  // calling funtion to print cities some visited which are saved in localstorage
 printVisitedCities();
 });
 //create button for clear localstorage id in the main page

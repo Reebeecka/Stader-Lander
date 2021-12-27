@@ -14,12 +14,12 @@
     localStorage.setItem("ID", JSON.stringify(arrayID));
 
 };
-
+// function to remove localstorage
 export function removeStorage(){
 
     localStorage.clear();
 }
-
+// funtion to get local storage save in visitedId
 export function staderBesökt(){
 
    let visitedId = JSON.parse(localStorage.getItem('ID')) || [];
