@@ -10,7 +10,12 @@ export function printStad(id) {
         return a.stadname.localeCompare(b.stadname);
       })
     )
-    .then((data) => data.forEach((stad) => printStadlocal(stad)));
+    .then((data) => data.forEach((stad) => printStadlocal(stad)))
+    
+    .catch((error) => {
+      console.error('Error Cities:', error);
+    }
+    );
 }
 
 export function printStadlocal(stad) {

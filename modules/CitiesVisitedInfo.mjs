@@ -45,6 +45,7 @@ export async function population() {
 async function getStartObjById(Id) {
     let h = "";
     let response = await fetch("json/stad.json");
+
     let data = await response.json();
     data.forEach((stad => {
         if (stad.id == Id) {

@@ -7,7 +7,11 @@ export function printLands() {
   //Get lander's data from JSON.
   fetch("json/land.json")
     .then((response) => response.json())
-    .then((data) => data.forEach((land) => printLand(land)));
+    .then((data) => data.forEach((land) => printLand(land)))
+    .catch((error) => {
+      console.error('Error:', error);
+    }
+    );
 }
 
 // print one country at a time (called from inside the fetch chain)
@@ -19,9 +23,10 @@ function printLand(land) {
   // Append the Li element to the UL thats already in HTML
   landNav.prepend(landName);
 
+
   //Create eventlistener for every contry
   landName.addEventListener("click", function () {
-
+  
     //Stader is an ul list in index.html and section is also in main
     let stader = document.getElementById("stader");
     let section = document.getElementById("section");
@@ -34,6 +39,7 @@ function printLand(land) {
   
     printCountry(land);
     printStad(land.id);
+    
   })
 }
 
