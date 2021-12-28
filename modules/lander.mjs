@@ -48,7 +48,7 @@ let contryH1 = document.createElement("h1");
 contryH1.innerText = land.countryname;
 // //Fetches from Wiki to print out a description of the contry
 let contryDescription = document.createElement("h3");
-contryDescription.innerHTML = s.pages[0].description;
+contryDescription.innerHTML = s.pages[0].description.charAt(0).toUpperCase() + s.pages[0].description.slice(1);
 
 let contryImg = document.createElement("img");
 contryImg.src = s.pages[0].thumbnail.url;

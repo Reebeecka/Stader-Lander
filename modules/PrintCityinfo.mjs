@@ -15,8 +15,9 @@ export async function ReadWikiAPI(wikiURL) {
 export async function readWeatherAync(stad) {
     //Fetches the correct API corresponding to the city you pressed in both Wikipedia and Weather
     let cityname = stad.stadname;
-    let url = "https://api.openweathermap.org/data/2.5/weather?q=" + cityname + "&appid=8a2c10b1ad16525bbb3226ccdfbfe9cb&lang=se";
+    let url = "https://api.openweathermap.org/data/2.5/weather?q=" + cityname + "&units=metric&appid=8a2c10b1ad16525bbb3226ccdfbfe9cb&lang=se";
     let g = await ReadAPI(url);
+
     let wikiURL = "https://sv.wikipedia.org/w/rest.php/v1/search/page?q=" + cityname + "&limit=1";
     let w = await ReadWikiAPI(wikiURL);
 
@@ -28,30 +29,22 @@ export async function readWeatherAync(stad) {
     stadH1.innerText = stad.stadname;
     //Fetches from Wiki to print out a description of the city
     let cityDescription = document.createElement("h3");
-    cityDescription.innerHTML = w.pages[0].description;
+    cityDescription.innerHTML = w.pages[0].description.charAt(0).toUpperCase() + w.pages[0].description.slice(1);
     //Fetches from Json to wite out population of city
     let stadP = document.createElement("p");
-    stadP.innerText = "Invånarantal: " + stad.population;
+    stadP.innerText = "Invånarantal: " + stad.population.toLocaleString();
     //Fetches img URL from API and puts it into imgtag to get an image of the city
     let cityImg = document.createElement("img");
     cityImg.src = w.pages[0].thumbnail.url;
     //Fetches the weather description from Weather API
     let weatherDescription = document.createElement("p");
     weatherDescription.innerHTML = "Idag är det " + g.weather[0].description;
-    //Fetches Max temp from weatherAPI and converts it from String to number (43), then converts it from 
-    //Kelvin to Celsius (45)
-    //Then rounds the number to get rid of decimals (47)
-    let stadmaxtemp = document.createElement("p");
-    let maxTemp = parseInt(g.main.temp_max, 10);
-    maxTemp = maxTemp - 273.15;
-    maxTemp = Math.round(maxTemp);
-    stadmaxtemp.innerText = "Med en högsta temperatur på " + maxTemp + " grader Celsius";
-    //Same as above but with the lowest temprature
-    let stadMinTemp = document.createElement("p");
-    let minTemp = parseInt(g.main.temp_min, 10);
-    minTemp = minTemp - 273.15;
-    minTemp = Math.round(minTemp);
-    stadMinTemp.innerText = " och en lägsta temperatur på " + minTemp + " grader Celsius";
+    //Fetches Current temrature from weatherAPI
+    let temp = document.createElement("p");
+    temp.innerHTML = "Nuvarande temperatur i " + cityname + " är " + g.main.temp + " °C";
+    //Fetches Max temp from weatherAPI
+    let stadMaxMinTemp = document.createElement("p");
+    stadMaxMinTemp.innerText ="Idag är den högsta temperaturen " + g.main.temp_max + " °C" + " och den lägsta temperaturen " + g.main.temp_min + " °C";
     //Fetches the pressure from WeatherAPI (dont know if we need this?)
     let stadPressure = document.createElement("p");
     stadPressure.innerText = "Pressure: " + g.main.pressure;
@@ -74,5 +67,5 @@ export async function readWeatherAync(stad) {
     });
 
     //Appends everything in the order we want it to the section
-    section.append(stadH1, cityDescription, stadP, cityImg, weatherDescription, stadmaxtemp, stadMinTemp, stadPressure, btnVisited);
+    section.append(stadH1, cityDescription, stadP, cityImg, weatherDescription, temp, stadMaxMinTemp, stadPressure, btnVisited);
 };

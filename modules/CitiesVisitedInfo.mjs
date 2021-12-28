@@ -30,7 +30,7 @@ export async function population() {
 
     totPop = formatNumber(totPop);
     function formatNumber(totPop) {
-        return totPop.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+        return totPop.toLocaleString(); 
     }
 
     let description = document.createElement("p");
