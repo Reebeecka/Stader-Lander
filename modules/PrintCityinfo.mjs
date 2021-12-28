@@ -1,4 +1,5 @@
 import { SaveToStorage } from "./localStorage.mjs";
+import { fixWikiURL } from "./lander.mjs";
 
 async function ReadAPI(url) {
     let response = await fetch(url);
@@ -36,6 +37,7 @@ export async function readWeatherAync(stad) {
     //Fetches img URL from API and puts it into imgtag to get an image of the city
     let cityImg = document.createElement("img");
     cityImg.src = w.pages[0].thumbnail.url;
+    cityImg.src = fixWikiURL(cityImg.src);
     //Fetches the weather description from Weather API
     let weatherDescription = document.createElement("p");
     weatherDescription.innerHTML = "Idag är det " + g.weather[0].description;
