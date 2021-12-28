@@ -1,6 +1,6 @@
-import { printStad,printVisitedCities, population} from "./stader.mjs";
-import { removeStorage} from "./localStorage.mjs";
-
+import { printStad } from "./stader.mjs";
+import { ReadWikiAPI } from "./PrintCityinfo.mjs";
+//import { removeStorage } from "./localStorage.mjs";
 
 // export only top-level function (printLands)
 export function printLands() {
@@ -14,68 +14,50 @@ export function printLands() {
 function printLand(land) {
   let landNav = document.getElementById("land");
   let landName = document.createElement("li");
-
   //Add text to LI element with the name of the Country
   landName.innerText = land.countryname;
-
   // Append the Li element to the UL thats already in HTML
-  landNav.append(landName);
+  landNav.prepend(landName);
 
   //Create eventlistener for every contry
-  landName.addEventListener("click", function(){
+  landName.addEventListener("click", function () {
+
     //Stader is an ul list in index.html and section is also in main
     let stader = document.getElementById("stader");
     let section = document.getElementById("section");
     let clear = document.getElementById("clear");
     //Clear stader and section to only show one contries cities
-    stader.innerHTML="";
-    section.innerHTML="";
-    clear.innerHTML="";
-    //call printStad, and send the ID of the contry you just clicked.
+    stader.innerHTML = "";
+    section.innerHTML = "";
+    clear.innerHTML = "";
+    //call printStad, and send the ID of the contry you just clicked. IN Stader.mjs
+  
+    printCountry(land);
     printStad(land.id);
   })
-
 }
 
-//create button for to show "Cities I visited"(Städer jag besökt) list in the main
-let btnVisited=document.createElement("li");
-btnVisited.innerText = "Städer jag besökt";
+//ONÖDIG FUNKTION BARA FÖR KUL
+async function printCountry(land){
+  console.log(land.countryname);
+let wikiURL = "https://sv.wikipedia.org/w/rest.php/v1/search/page?q=" + land.countryname + "&limit=1";
+let s = await ReadWikiAPI(wikiURL);
 
-let landNav = document.getElementById("land");
-landNav.append(btnVisited);
+// //Creates H1 element that writes out Country name
+let contryH1 = document.createElement("h1");
+contryH1.innerText = land.countryname;
+// //Fetches from Wiki to print out a description of the contry
+let contryDescription = document.createElement("h3");
+contryDescription.innerHTML = s.pages[0].description.charAt(0).toUpperCase() + s.pages[0].description.slice(1);
 
-//create eventlistener to "Städer jag besökt" button
-btnVisited.addEventListener("click",function(){
-  
-let clear = document.getElementById("clear");
-clear.innerHTML="";
+let contryImg = document.createElement("img");
+contryImg.src = s.pages[0].thumbnail.url;
 
-//In stader.mjs
-printVisitedCities();
-population();
-
-
-//create button for clear localstorage id in the main page
-let btnClear=document.createElement("button");
-btnClear.innerText = "Töm min lista";
-
-clear.append(btnClear);
-
-//Add eventlistener and give the new function to clear the localstorage data
-btnClear.addEventListener("click", function(){
-
+let description = document.createElement("p");
+description.innerHTML = "Till vänster ser du några av " + land.countryname + "s städer, tryck på en av dessa för mer infomration!"
 let section = document.getElementById("section");
-let stader = document.getElementById("stader");
+section.append(contryH1, contryDescription, contryImg, description);
+}
 
-section.innerHTML="";
-stader.innerHTML="";
 
-  //In localStorage
- removeStorage();
-
-})
-
-});
-
- 
 
