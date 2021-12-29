@@ -39,9 +39,24 @@ function printLand(land) {
   
     printCountry(land);
     printStad(land.id);
+
+/*     switch(landName.className){
+      case "active":
+        landName.classList.remove("active");
+        break;
+        default: 
+        landName.className = "active"; */
+   /*  } */
     
+    /* 
+    if(this.classList.contains('active')){
+      this.classList.remove("active");
+    } else {
+      this.classList.add("active");
+    } */
   })
 }
+
 
 //ONÖDIG FUNKTION BARA FÖR KUL
 async function printCountry(land){
