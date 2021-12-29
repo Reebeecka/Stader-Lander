@@ -20,6 +20,7 @@ function printLand(land) {
   let landName = document.createElement("li");
   //Add text to LI element with the name of the Country
   landName.innerText = land.countryname;
+  landName.className = "Contries";
   // Append the Li element to the UL thats already in HTML
   landNav.prepend(landName);
 
@@ -39,24 +40,17 @@ function printLand(land) {
   
     printCountry(land);
     printStad(land.id);
-
-/*     switch(landName.className){
-      case "active":
-        landName.classList.remove("active");
-        break;
-        default: 
-        landName.className = "active"; */
-   /*  } */
-    
-    /* 
-    if(this.classList.contains('active')){
-      this.classList.remove("active");
-    } else {
-      this.classList.add("active");
-    } */
+    switchColors(landName);
   })
 }
+export function switchColors(landName){
+  let liElements = document.getElementsByClassName("Contries");
 
+  for(let i = 0; i < liElements.length; i ++){
+    liElements.item(i).style.color = "white";
+    landName.style.color="red";
+  }
+}
 
 //ONÖDIG FUNKTION BARA FÖR KUL
 async function printCountry(land){

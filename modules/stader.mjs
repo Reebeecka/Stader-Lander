@@ -24,13 +24,24 @@ export function printStadlocal(stad) {
   let li = document.createElement("li");
   // LI inner text is the cityname in the API
   li.innerText = stad.stadname;
+  li.className = "Cities";
   //appended li to ul
   stader.append(li);
   // Adds eventlistenes to the cities
   li.addEventListener("click", function () {
     //In PrintCityInfo.mjs
     readWeatherAync(stad);
+    switchColor(li);
   });
 };
+
+export function switchColor(cityname){
+  let liElements = document.getElementsByClassName("Cities");
+
+  for(let i = 0; i < liElements.length; i ++){
+    liElements.item(i).style.color = "white";
+    cityname.style.color="red";
+  }
+}
 
 

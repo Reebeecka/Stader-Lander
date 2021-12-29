@@ -1,10 +1,12 @@
 import { removeStorage } from "./localStorage.mjs";
 import { printVisitedCities, population } from "./CitiesVisitedInfo.mjs";
+import { switchColors } from "./lander.mjs";
 
 export function CitiesVisitedLiElement() {
     //create button for to show "Cities I visited"(Städer jag besökt) list in the main
     let btnVisited = document.createElement("li");
     btnVisited.innerText = "Städer jag besökt";
+    btnVisited.className="Contries";
     let landNav = document.getElementById("land");
     landNav.append(btnVisited);
 
@@ -16,6 +18,7 @@ export function CitiesVisitedLiElement() {
         //In citesVistedInfo.mjs
         printVisitedCities();
         population();
+        switchColors(btnVisited);
 
         //create button for clear localstorage id in the main page
         let btnClear = document.createElement("button");
