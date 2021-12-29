@@ -82,7 +82,7 @@ contryImg.src = s.pages[0].thumbnail.url;
 contryImg.src = fixWikiURL(contryImg.src);
 
 let description = document.createElement("p");
-description.innerHTML = "Till vänster ser du några av " + land.countryname + "s städer, tryck på en av dessa för mer infomration!"
+description.innerHTML = "Överst ser du några av " + land.countryname + "s städer, tryck på en av dessa för mer infomration!"
 let section = document.getElementById("section");
 section.innerHTML = "";
 section.append(contryH1, contryDescription, contryImg, description);
