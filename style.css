@@ -4,13 +4,18 @@
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 header {
   background-color: #424242;
   color: white;
-  padding: 40px;
+  padding: 30px;
+}
+
+#logoImg {
+  background-color: #424242;
+  border-radius: 60%;
 }
 
 ul {
@@ -27,14 +32,13 @@ ul {
 li {
   cursor: pointer;
 }
-
 li:hover {
   -webkit-text-decoration: underline 2px white;
           text-decoration: underline 2px white;
 }
 
-li:active {
-  color: red;
+.active {
+  color: blue;
 }
 
 #staderSection {
@@ -49,23 +53,17 @@ li:active {
 img {
   -webkit-box-shadow: 0px 3px 25px 5px rgba(0, 0, 0, 0.5);
           box-shadow: 0px 3px 25px 5px rgba(0, 0, 0, 0.5);
-  -ms-grid-row: 1;
-  -ms-grid-row-span: 9;
-  -ms-grid-column: 1;
-  -ms-grid-column-span: 1;
   grid-area: 1/1/10/2;
-  -ms-grid-column-align: center;
-      justify-self: center;
+  justify-self: center;
 }
 
 h1, h3, p, img, button, ul, li {
-  -webkit-animation: append-animate .3s linear;
-          animation: append-animate .3s linear;
+  -webkit-animation: append-animate 0.3s linear;
+          animation: append-animate 0.3s linear;
 }
 
 h1, h3, p, button {
-  -ms-grid-column: 2;
-      grid-column-start: 2;
+  grid-column-start: 2;
 }
 
 @-webkit-keyframes append-animate {
@@ -93,22 +91,13 @@ h1, h3, p, button {
     opacity: 1;
   }
 }
-
 #section {
   margin-top: 60px;
-  display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 1fr 1fr 40px;
-      grid-template-columns: 1fr 1fr 40px;
-  -ms-grid-rows: (1fr)[9];
-      grid-template-rows: repeat(9, 1fr);
+  grid-template-columns: 1fr 1fr 40px;
+  grid-template-rows: repeat(9, 1fr);
 }
-
 #section button {
-  -ms-grid-row: 8;
-  -ms-grid-row-span: 2;
-  -ms-grid-column: 2;
-  -ms-grid-column-span: 1;
   grid-area: 8/2/10/3;
 }
 
@@ -121,15 +110,12 @@ button {
   font-size: 1rem;
   padding: 15px;
 }
-
 button:hover {
   background-color: red;
 }
 
 #clear {
-  display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 1fr 1fr 40px;
-      grid-template-columns: 1fr 1fr 40px;
+  grid-template-columns: 1fr 1fr 40px;
 }
 /*# sourceMappingURL=style.css.map */
