@@ -14,6 +14,18 @@ export function printLands() {
     );
 }
 
+
+// fix problem when page is opened as file and URL is "file:///"
+// call this function AFTER assigning the field .url of the image object
+// otherwise, the path will simply be a relative path without "file:///"
+export function fixWikiURL(url) {
+  if (url.startsWith("file:///")) {
+    url = "https://upload.wikimedia.org/" + url.substring(8);
+    // 8 = position at string after "file:///"
+  }
+  return url;
+}
+
 // print one country at a time (called from inside the fetch chain)
 function printLand(land) {
   let landNav = document.getElementById("land");
@@ -73,6 +85,7 @@ contryDescription.innerHTML = s.pages[0].description.charAt(0).toUpperCase() + s
 
 let contryImg = document.createElement("img");
 contryImg.src = s.pages[0].thumbnail.url;
+contryImg.src = fixWikiURL(contryImg.src);
 
 let description = document.createElement("p");
 description.innerHTML = "Till vänster ser du några av " + land.countryname + "s städer, tryck på en av dessa för mer infomration!"
