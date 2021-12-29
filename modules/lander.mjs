@@ -66,7 +66,7 @@ export function switchColors(landName){
 
 //ONÖDIG FUNKTION BARA FÖR KUL
 async function printCountry(land){
-  console.log(land.countryname);
+
 let wikiURL = "https://sv.wikipedia.org/w/rest.php/v1/search/page?q=" + land.countryname + "&limit=1";
 let s = await ReadWikiAPI(wikiURL);
 
@@ -84,6 +84,7 @@ contryImg.src = fixWikiURL(contryImg.src);
 let description = document.createElement("p");
 description.innerHTML = "Till vänster ser du några av " + land.countryname + "s städer, tryck på en av dessa för mer infomration!"
 let section = document.getElementById("section");
+section.innerHTML = "";
 section.append(contryH1, contryDescription, contryImg, description);
 }
 
