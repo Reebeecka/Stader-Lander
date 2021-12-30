@@ -60,7 +60,7 @@ export async function readWeatherAync(stad) {
     stadMaxMinTemp.innerText ="Idag är den högsta temperaturen " + g.main.temp_max + " °C" + " och den lägsta temperaturen " + g.main.temp_min + " °C";
     //Fetches the pressure from WeatherAPI (dont know if we need this?)
     let stadPressure = document.createElement("p");
-    stadPressure.innerText = "Pressure: " + g.main.pressure;
+    stadPressure.innerText = "Pressure: " + g.main.pressure + "hPa";
 
     //Create Button for visited city
     let btnVisited = document.createElement("button");
