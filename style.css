@@ -127,7 +127,7 @@ button {
   display: grid;
   -ms-grid-columns: 1fr 1fr 40px;
       grid-template-columns: 1fr 1fr 40px;
-  -ms-grid-rows: (1fr)[9];
+  -ms-grid-rows: (1fr),9;
       grid-template-rows: repeat(9, 1fr);
   height: 35vh;
 }
@@ -151,7 +151,7 @@ button {
   display: grid;
   -ms-grid-columns: 1fr 1fr 40px;
       grid-template-columns: 1fr 1fr 40px;
-  -ms-grid-rows: (1fr)[3];
+  -ms-grid-rows: (1fr),3;
       grid-template-rows: repeat(3, 1fr);
   gap: 2rem;
 }
