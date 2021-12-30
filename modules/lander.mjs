@@ -88,6 +88,7 @@ contryImg.src = fixWikiURL(contryImg.src);
 
 let description = document.createElement("p");
 description.innerHTML = "Här ovan ser du några av " + land.countryname + "s städer, tryck på en av dessa för mer infomration!"
+
 let section = document.getElementById("section");
 section.innerHTML = "";
 
