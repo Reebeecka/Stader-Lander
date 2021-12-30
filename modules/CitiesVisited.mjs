@@ -3,10 +3,14 @@ import { printVisitedCities, population } from "./CitiesVisitedInfo.mjs";
 import { switchColors } from "./lander.mjs";
 
 export function CitiesVisitedLiElement() {
-    //create button for to show "Cities I visited"(Städer jag besökt) list in the main
+    //create li element to show "Cities I visited"(Städer jag besökt) list in the main
     let btnVisited = document.createElement("li");
+   
     btnVisited.innerText = "Städer jag besökt";
+    
     btnVisited.className="Contries";
+
+    //append li elemnt to main nav list 
     let landNav = document.getElementById("land");
     landNav.append(btnVisited);
 
@@ -14,12 +18,15 @@ export function CitiesVisitedLiElement() {
     btnVisited.addEventListener("click", function () {
         let clear = document.getElementById("clear");
         clear.innerHTML = "";
+       
 
-        //In citesVistedInfo.mjs
+        //calling this function to print visited cities and total population from citesVistedInfo.mjs
         printVisitedCities();
         population();
+        //calling this function to change color of list item when it clicked
         switchColors(btnVisited);
-
+        clear.innerHTML = "";
+        
         //create button for clear localstorage id in the main page
         let btnClear = document.createElement("button");
         btnClear.innerText = "Töm min lista";
@@ -32,7 +39,7 @@ export function CitiesVisitedLiElement() {
             section.innerHTML = "";
             stader.innerHTML = "";
 
-            //In localStorage.mjs
+            //call this function to clear localstorage from localStorage.mjs
             removeStorage();
         });
     });

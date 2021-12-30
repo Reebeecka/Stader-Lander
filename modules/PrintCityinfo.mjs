@@ -1,6 +1,6 @@
 import { SaveToStorage } from "./localStorage.mjs";
 import { fixWikiURL } from "./lander.mjs";
-
+//ReadApi for read api
 async function ReadAPI(url) {
     let response = await fetch(url);
     let data = await response.json();

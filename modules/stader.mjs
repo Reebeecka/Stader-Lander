@@ -34,10 +34,10 @@ export function printStadlocal(stad) {
     switchColor(li);
   });
 };
-
+//function to change color of list item when it clicked
 export function switchColor(cityname){
   let liElements = document.getElementsByClassName("Cities");
-
+//styling for change color
   for(let i = 0; i < liElements.length; i ++){
     liElements.item(i).style.color = "white";
     cityname.style.color="red";
