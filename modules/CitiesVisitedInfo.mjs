@@ -48,8 +48,8 @@ export async function population() {
     }
     
     let description = document.createElement("p");
-    description.innerHTML = "Till vänster ser du alla städer du besökt";
-     //creating an elemnt to print total population
+    description.innerHTML = "Här ovan ser du alla städer du besökt";
+
     let allPopulation = document.createElement("p");
     allPopulation.innerHTML = "Det totala invånarantalet av alla dessa städer är " + totPop;
     let section = document.getElementById("section");

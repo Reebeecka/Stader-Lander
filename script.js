@@ -8,9 +8,7 @@ printLands();
 //In citiesVisted.mjs
 CitiesVisitedLiElement();
 
-
-// style
-
+    
 /// stader.mjs
 /// klickevent visa städer
 /// vilket id på land har man tryckt på

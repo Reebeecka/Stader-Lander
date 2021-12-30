@@ -40,7 +40,10 @@ export function switchColor(cityname){
 //styling for change color
   for(let i = 0; i < liElements.length; i ++){
     liElements.item(i).style.color = "white";
-    cityname.style.color="red";
+    liElements.item(i).style.border="none";
+
+    cityname.style.color="#424242";
+    cityname.style.border="3px solid white";
   }
 }
 
