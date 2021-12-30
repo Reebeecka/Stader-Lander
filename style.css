@@ -12,15 +12,21 @@ header {
   color: white;
 }
 
-#logoImg {
-  background-color: #424242;
-  border-radius: 60%;
-
+header ul {
+  margin-left: 100px;
 }
 
 header li {
   padding: 40px;
+}
 
+#logoImg {
+  background-color: #424242;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  position: absolute;
+  top: 20px;
+  left: 20px;
 }
 
 ul {
@@ -28,6 +34,8 @@ ul {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
@@ -36,7 +44,9 @@ ul {
 
 li {
   cursor: pointer;
+  font-size: 1rem;
 }
+
 li:hover {
   -webkit-text-decoration: underline 2px white;
           text-decoration: underline 2px white;
@@ -57,17 +67,32 @@ li:hover {
 img {
   -webkit-box-shadow: 0px 3px 25px 5px rgba(0, 0, 0, 0.5);
           box-shadow: 0px 3px 25px 5px rgba(0, 0, 0, 0.5);
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 9;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 1;
   grid-area: 1/1/10/2;
-  justify-self: center;
+  -ms-grid-column-align: center;
+      justify-self: center;
 }
 
-h1, h3, p, img, button, ul, li {
+h1,
+h3,
+p,
+img,
+button,
+ul,
+li {
   -webkit-animation: append-animate 0.3s linear;
           animation: append-animate 0.3s linear;
 }
 
-h1, h3, p, button {
-  grid-column-start: 2;
+h1,
+h3,
+p,
+button {
+  -ms-grid-column: 2;
+      grid-column-start: 2;
 }
 
 @-webkit-keyframes append-animate {
@@ -95,17 +120,32 @@ h1, h3, p, button {
     opacity: 1;
   }
 }
+
 #section {
   margin-top: 60px;
+  display: -ms-grid;
   display: grid;
-  grid-template-columns: 1fr 1fr 40px;
-  grid-template-rows: repeat(9, 1fr);
+  -ms-grid-columns: 1fr 1fr 40px;
+      grid-template-columns: 1fr 1fr 40px;
+  -ms-grid-rows: (1fr)[9];
+      grid-template-rows: repeat(9, 1fr);
+  height: 35vh;
 }
+
 #section button {
+  -ms-grid-row: 8;
+  -ms-grid-row-span: 2;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
   grid-area: 8/2/10/3;
 }
 
+#section h1 {
+  font-size: 2rem;
+}
+
 #clear {
+  height: 35vh;
   margin-top: 1rem;
   display: -ms-grid;
   display: grid;
@@ -122,7 +162,9 @@ h1, h3, p, button {
   max-width: 50%;
 }
 
-#clear p, #clear a, #clear h2 {
+#clear p,
+#clear a,
+#clear h2 {
   -ms-grid-column: 2;
       grid-column-start: 2;
 }
@@ -136,12 +178,15 @@ button {
   font-size: 1rem;
   padding: 15px;
 }
+
 button:hover {
   background-color: #424242;
 }
 
 #clear {
+  display: -ms-grid;
   display: grid;
-  grid-template-columns: 1fr 1fr 40px;
+  -ms-grid-columns: 1fr 1fr 40px;
+      grid-template-columns: 1fr 1fr 40px;
 }
 /*# sourceMappingURL=style.css.map */
