@@ -10,12 +10,16 @@ body {
 header {
     background-color: rgb(66, 66, 66);
     color: white;
-    padding: 30px;
 }
 
 #logoImg {
     background-color: #424242;
     border-radius: 60%;
+
+    li{
+        padding:40px;
+    }
+
 }
 
 ul {
@@ -32,10 +36,6 @@ li {
         text-decoration: underline 2px white;
     }
 }
-.active{
-    color:blue;
-}
-
 
 #staderSection {
     background-color: rgb(97, 123, 196);
@@ -44,6 +44,8 @@ li {
 
 #stader li {
     padding: 40px;
+    margin-left: 40px;
+    flex-wrap: wrap;
 }
 
 img {
@@ -83,6 +85,20 @@ h1, h3, p, img, button, ul, li {
           grid-area: 8/2/10/3;
       }
   }
+  #clear{
+    margin-top:1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 40px;
+    grid-template-rows: repeat(3,1fr);
+    gap: 2rem;
+    img{
+        grid-column-start: 1;
+        max-width: 50%;
+    }
+    p, a, h2{
+        grid-column-start: 2;
+    }
+  }
 
 button {
     max-width: 300px;
@@ -93,7 +109,7 @@ button {
     font-size: 1rem;
     padding: 15px;
     &:hover {
-        background-color: red;
+        background-color: rgb(66, 66, 66);
     }
 }
 

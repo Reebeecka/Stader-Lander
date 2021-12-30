@@ -13,6 +13,13 @@ export async function ReadWikiAPI(wikiURL) {
     return data;
 }
 
+
+// fetch("https://newsapi.org/v2/everything?q=Sverige&from=2021-11-29&sortBy=publishedAt&apiKey=ce2d33c9daf84acbae294d547091fba1")
+//     .then((response) => response.json())
+//     .then((data) =>
+//       console.log(data)
+//     );
+
 export async function readWeatherAync(stad) {
     //Fetches the correct API corresponding to the city you pressed in both Wikipedia and Weather
     let cityname = stad.stadname;
@@ -21,6 +28,10 @@ export async function readWeatherAync(stad) {
 
     let wikiURL = "https://sv.wikipedia.org/w/rest.php/v1/search/page?q=" + cityname + "&limit=1";
     let w = await ReadWikiAPI(wikiURL);
+
+    let newsURL = "https://newsapi.org/v2/everything?q=" + cityname + "&from=2021-11-29&sortBy=publishedAt&apiKey=ce2d33c9daf84acbae294d547091fba1";
+    let n = await ReadWikiAPI(newsURL);
+
 
     //Finds the section already in HTML and clears in to only get one city
     let section = document.getElementById("section");
@@ -55,6 +66,22 @@ export async function readWeatherAync(stad) {
     let btnVisited = document.createElement("button");
     btnVisited.innerText = "Jag har besökt denna stad!";
 
+    let section2 = document.getElementById("clear");
+    section2.innerHTML="";
+
+    let title = document.createElement("h2");
+    title.innerHTML=n.articles[0].title;
+
+    let news = document.createElement("p");
+    news.innerHTML=n.articles[0].description;
+
+    let source = document.createElement("img");
+    source.src=n.articles[0].urlToImage;
+
+    let articleLink = document.createElement("a");
+    articleLink.innerHTML=n.articles[0].source.name;
+    articleLink.href=n.articles[0].url;
+
     //Add eventlistener and give the new funtion acess to stad.ID, new function in LocalStorage
     let clickedbtn = false;
     btnVisited.addEventListener("click", function () {
@@ -70,4 +97,5 @@ export async function readWeatherAync(stad) {
 
     //Appends everything in the order we want it to the section
     section.append(stadH1, cityDescription, stadP, cityImg, weatherDescription, temp, stadMaxMinTemp, stadPressure, btnVisited);
+    section2.append(title, news, source, articleLink);
 };
