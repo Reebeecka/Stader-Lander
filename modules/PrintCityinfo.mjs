@@ -79,7 +79,7 @@ export async function readWeatherAync(stad) {
     source.src=n.articles[0].urlToImage;
 
     let articleLink = document.createElement("a");
-    articleLink.innerHTML=n.articles[0].url;
+    articleLink.innerHTML=n.articles[0].source.name;
     articleLink.href=n.articles[0].url;
 
     //Add eventlistener and give the new funtion acess to stad.ID, new function in LocalStorage

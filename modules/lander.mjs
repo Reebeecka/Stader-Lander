@@ -87,7 +87,7 @@ contryImg.src = s.pages[0].thumbnail.url;
 contryImg.src = fixWikiURL(contryImg.src);
 
 let description = document.createElement("p");
-description.innerHTML = "Till vänster ser du några av " + land.countryname + "s städer, tryck på en av dessa för mer infomration!"
+description.innerHTML = "Här ovan ser du några av " + land.countryname + "s städer, tryck på en av dessa för mer infomration!"
 let section = document.getElementById("section");
 section.innerHTML = "";
 
@@ -104,7 +104,7 @@ let section2 = document.getElementById("clear");
     source.src=n.articles[0].urlToImage;
 
     let articleLink = document.createElement("a");
-    articleLink.innerHTML=n.articles[0].url;
+    articleLink.innerHTML=n.articles[0].source.name;
     articleLink.href=n.articles[0].url;
 
 section.append(contryH1, contryDescription, contryImg, description);
