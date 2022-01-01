@@ -29,7 +29,7 @@ export async function readWeatherAync(stad) {
     let wikiURL = "https://sv.wikipedia.org/w/rest.php/v1/search/page?q=" + cityname + "&limit=1";
     let w = await ReadWikiAPI(wikiURL);
 
-    let newsURL = "https://newsapi.org/v2/everything?q=" + cityname + "&from=2021-11-29&sortBy=publishedAt&apiKey=ce2d33c9daf84acbae294d547091fba1";
+    let newsURL = "https://newsapi.org/v2/everything?q=" + cityname + "&from="+new Date().toISOString().slice(0, 10) +"&sortBy=publishedAt&apiKey=ce2d33c9daf84acbae294d547091fba1";
     let n = await ReadWikiAPI(newsURL);
 
 
