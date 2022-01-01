@@ -96,16 +96,19 @@ section.innerHTML = "";
 
 let section2 = document.getElementById("clear");
     section2.innerHTML="";
-
+    //Fetches from newsApi to print title of the country
     let title = document.createElement("h2");
     title.innerHTML=n.articles[0].title;
 
+    //Fetches from newsApi to print article of the country
     let news = document.createElement("p");
     news.innerHTML=n.articles[0].description;
 
+    //Fetches from newsApi to print image of article in the country
     let source = document.createElement("img");
     source.src=n.articles[0].urlToImage;
 
+    //Fetches from newsApi to show article link from the country
     let articleLink = document.createElement("a");
     articleLink.innerHTML=n.articles[0].source.name;
     articleLink.href=n.articles[0].url;

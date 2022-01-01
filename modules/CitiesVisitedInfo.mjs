@@ -50,6 +50,7 @@ export async function population() {
     let description = document.createElement("p");
     description.innerHTML = "Här ovan ser du alla städer du besökt";
 
+    //creating element to print the total population
     let allPopulation = document.createElement("p");
     allPopulation.innerHTML = "Det totala invånarantalet av alla dessa städer är " + totPop;
     let section = document.getElementById("section");

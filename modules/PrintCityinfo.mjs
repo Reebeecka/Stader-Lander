@@ -1,12 +1,12 @@
 import { SaveToStorage } from "./localStorage.mjs";
 import { fixWikiURL } from "./lander.mjs";
-//ReadApi for read api
+//ReadApi for to fetch api
 async function ReadAPI(url) {
     let response = await fetch(url);
     let data = await response.json();
     return data;
 }
-
+//function to fetch Api url
 export async function ReadWikiAPI(wikiURL) {
     let response = await fetch(wikiURL);
     let data = await response.json();
@@ -69,15 +69,19 @@ export async function readWeatherAync(stad) {
     let section2 = document.getElementById("clear");
     section2.innerHTML="";
 
+    //Fetches from newsApi to print title of the city
     let title = document.createElement("h2");
     title.innerHTML=n.articles[0].title;
 
+    //Fetches from newsApi to print newsarticle of the city
     let news = document.createElement("p");
     news.innerHTML=n.articles[0].description;
 
+    //Fetches from newsApi to print news article image of the city
     let source = document.createElement("img");
     source.src=n.articles[0].urlToImage;
 
+    //Fetches from newsApi to show article link of the city
     let articleLink = document.createElement("a");
     articleLink.innerHTML=n.articles[0].source.name;
     articleLink.href=n.articles[0].url;
