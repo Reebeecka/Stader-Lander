@@ -1,24 +1,17 @@
 import { SaveToStorage } from "./localStorage.mjs";
 import { fixWikiURL } from "./lander.mjs";
-//ReadApi for read api
+//ReadApi for to fetch api
 async function ReadAPI(url) {
     let response = await fetch(url);
     let data = await response.json();
     return data;
 }
-
+//function to fetch Api url
 export async function ReadWikiAPI(wikiURL) {
     let response = await fetch(wikiURL);
     let data = await response.json();
     return data;
 }
-
-
-// fetch("https://newsapi.org/v2/everything?q=Sverige&from=2021-11-29&sortBy=publishedAt&apiKey=ce2d33c9daf84acbae294d547091fba1")
-//     .then((response) => response.json())
-//     .then((data) =>
-//       console.log(data)
-//     );
 
 export async function readWeatherAync(stad) {
     //Fetches the correct API corresponding to the city you pressed in both Wikipedia and Weather
@@ -29,7 +22,7 @@ export async function readWeatherAync(stad) {
     let wikiURL = "https://sv.wikipedia.org/w/rest.php/v1/search/page?q=" + cityname + "&limit=1";
     let w = await ReadWikiAPI(wikiURL);
 
-    let newsURL = "https://newsapi.org/v2/everything?q=" + cityname + "&from=2021-11-29&sortBy=publishedAt&apiKey=ce2d33c9daf84acbae294d547091fba1";
+    let newsURL = "https://newsapi.org/v2/everything?q=" + cityname + "&from="+new Date().toISOString().slice(0, 10) +"&sortBy=publishedAt&apiKey=ce2d33c9daf84acbae294d547091fba1";
     let n = await ReadWikiAPI(newsURL);
 
 
@@ -69,15 +62,19 @@ export async function readWeatherAync(stad) {
     let section2 = document.getElementById("clear");
     section2.innerHTML="";
 
+    //Fetches from newsApi to print title of the city
     let title = document.createElement("h2");
     title.innerHTML=n.articles[0].title;
 
+    //Fetches from newsApi to print newsarticle of the city
     let news = document.createElement("p");
     news.innerHTML=n.articles[0].description;
 
+    //Fetches from newsApi to print news article image of the city
     let source = document.createElement("img");
     source.src=n.articles[0].urlToImage;
 
+    //Fetches from newsApi to show article link of the city
     let articleLink = document.createElement("a");
     articleLink.innerHTML=n.articles[0].source.name;
     articleLink.href=n.articles[0].url;
