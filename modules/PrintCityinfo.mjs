@@ -13,13 +13,6 @@ export async function ReadWikiAPI(wikiURL) {
     return data;
 }
 
-
-// fetch("https://newsapi.org/v2/everything?q=Sverige&from=2021-11-29&sortBy=publishedAt&apiKey=ce2d33c9daf84acbae294d547091fba1")
-//     .then((response) => response.json())
-//     .then((data) =>
-//       console.log(data)
-//     );
-
 export async function readWeatherAync(stad) {
     //Fetches the correct API corresponding to the city you pressed in both Wikipedia and Weather
     let cityname = stad.stadname;
